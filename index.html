@@ -68,7 +68,7 @@
     .welcome p strong{color:#fff;font-weight:700}
 
     .content{padding:28px 22px 100px}
-    .section-title{font-size:.8rem;font-weight:800;color:var(--text);text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+    .section-title{font-size:.8rem;margin-top:18px;font-weight:800;color:var(--text);text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
 
     .mentoria-video{
       border-radius:var(--radius) var(--radius) 0 0;
@@ -76,7 +76,7 @@
     }
     .mentoria-card{
       background:var(--card);border-radius:var(--radius);overflow:hidden;
-      box-shadow:var(--shadow);margin-bottom:32px;border:1px solid var(--border);
+      box-shadow:var(--shadow);margin-bottom:14px;border:1px solid var(--border);
     }
     .mentoria-thumb{
       position:relative;background:linear-gradient(145deg,#0a3d2f,#0D7C5F,#0a6a50);
@@ -130,7 +130,7 @@
     .mentoria-info h4{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:3px}
     .mentoria-info p{font-size:.72rem;color:var(--text3);font-weight:500}
 
-    .modulos-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+    .modulos-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
     .modulo-item{
       background:var(--card);border-radius:12px;border:1px solid var(--border);
       display:flex;align-items:center;gap:14px;padding:16px 16px;
@@ -150,7 +150,7 @@
     .modulo-icon{width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .modulo-icon svg{width:16px;height:16px;opacity:.35}
 
-    .quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:32px}
+    .quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
     .quick-card{
       background:var(--card);border-radius:var(--radius);border:1px solid var(--border);
       padding:18px 10px;text-align:center;opacity:.45;position:relative;
@@ -235,7 +235,7 @@
       .modal-cta{font-size:.72rem;padding:12px 20px}
     }
     /* === COMMENTS === */
-    .comments-section{margin-bottom:32px}
+    .comments-section{margin-bottom:14px}
     .comment-count{
       font-size:.55rem;font-weight:600;color:var(--text3);
       background:var(--border);border-radius:10px;padding:2px 7px;
@@ -325,7 +325,7 @@
     /* === QUIZ === */
     .quiz-section{
       background:var(--card);border:1px solid var(--border);
-      border-radius:var(--radius);overflow:hidden;margin-bottom:32px;
+      border-radius:var(--radius);overflow:hidden;margin-bottom:14px;
     }
     .quiz-header{
       background:var(--green);padding:16px;
@@ -464,22 +464,23 @@
     .app-wrapper.blurred{filter:blur(6px);pointer-events:none;user-select:none}
 
     @media(min-width:600px){
-      .content{max-width:680px;margin:0 auto;padding:32px 24px 100px}
+      .content{max-width:640px;margin:0 auto;padding:32px 0 100px}
       .mentoria-card{border-radius:16px}
       .mentoria-video{border-radius:16px 16px 0 0}
       .welcome{justify-content:center}
+      .header-inner{max-width:640px;margin:0 auto}
     }
     @media(min-width:900px){
-      .content{max-width:780px;padding:40px 32px 100px}
-      .header{padding:14px calc((100% - 780px)/2 + 20px)}
-      .welcome{padding:13px calc((100% - 780px)/2 + 20px)}
-      .footer{padding:24px calc((100% - 780px)/2 + 20px)}
+      .content{max-width:720px}
+      .header{padding:14px calc((100% - 720px)/2)}
+      .welcome{padding:13px calc((100% - 720px)/2)}
+      .footer{padding:24px calc((100% - 720px)/2)}
     }
     @media(min-width:1200px){
-      .content{max-width:860px;padding:48px 40px 100px}
-      .header{padding:14px calc((100% - 860px)/2 + 20px)}
-      .welcome{padding:13px calc((100% - 860px)/2 + 20px)}
-      .footer{padding:24px calc((100% - 860px)/2 + 20px)}
+      .content{max-width:800px}
+      .header{padding:14px calc((100% - 800px)/2)}
+      .welcome{padding:13px calc((100% - 800px)/2)}
+      .footer{padding:24px calc((100% - 800px)/2)}
     }
   </style>
 </head>
