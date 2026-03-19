@@ -120,7 +120,7 @@
     .quiz-chevron{transition:transform .3s ease;flex-shrink:0}
     .quiz-chevron.open{transform:rotate(180deg)}
     .quiz-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
-    .quiz-body.open{max-height:5000px}
+    .quiz-body.open{max-height:5000px;padding-bottom:40px}
     .quiz-progress{height:3px;background:var(--border);margin:0}
     .quiz-progress-bar{height:100%;background:var(--green-light);transition:width .4s ease;border-radius:0 3px 3px 0}
     .quiz-counter{font-size:.58rem;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:14px 16px 0}
@@ -217,6 +217,87 @@
     .fixacao-pdf-desc{font-size:.58rem;font-weight:500;color:rgba(232,212,139,.5)}
     .fixacao-pdf-arrow{color:rgba(201,168,76,.4);flex-shrink:0}
     .fixacao-pdf-arrow svg{width:16px;height:16px}
+    /* === FLASHCARDS === */
+    .fixacao-flashcards{padding:0 16px 16px}
+    .flashcard-label{
+      display:flex;align-items:center;gap:6px;margin-bottom:10px;
+      font-size:.6rem;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.5px;
+    }
+    .flashcard-label svg{width:14px;height:14px}
+    .flashcard-wrapper{position:relative;height:180px;perspective:1000px}
+    .flashcard{
+      width:100%;height:100%;position:relative;cursor:pointer;
+      transition:transform .6s ease;transform-style:preserve-3d;
+    }
+    .flashcard.flipped{transform:rotateY(180deg)}
+    .flashcard-face{
+      position:absolute;inset:0;border-radius:10px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:20px 16px;backface-visibility:hidden;
+      text-align:center;
+    }
+    .flashcard-front{
+      background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));
+      border:1.5px solid rgba(201,168,76,.25);
+    }
+    .flashcard-front-label{font-size:.5rem;font-weight:700;color:rgba(201,168,76,.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+    .flashcard-front-q{font-size:.78rem;font-weight:700;color:#E8D48B;line-height:1.5}
+    .flashcard-back{
+      background:linear-gradient(135deg,#C9A84C,#E8D48B);
+      border:1.5px solid rgba(201,168,76,.4);
+      transform:rotateY(180deg);
+    }
+    .flashcard-back-label{font-size:.5rem;font-weight:700;color:rgba(26,22,16,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+    .flashcard-back-a{font-size:.74rem;font-weight:700;color:#1a1610;line-height:1.5}
+    .flashcard-tap{font-size:.48rem;color:rgba(201,168,76,.35);margin-top:8px;font-weight:600}
+    .flashcard-nav{
+      display:flex;align-items:center;justify-content:space-between;
+      margin-top:10px;
+    }
+    .flashcard-btn{
+      width:36px;height:36px;border-radius:50%;
+      background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;transition:all .2s ease;
+    }
+    .flashcard-btn:hover{background:rgba(201,168,76,.15);border-color:rgba(201,168,76,.4)}
+    .flashcard-btn svg{width:14px;height:14px;color:#C9A84C}
+    .flashcard-btn.disabled{opacity:.2;pointer-events:none}
+    .flashcard-counter{font-size:.58rem;font-weight:600;color:rgba(201,168,76,.5)}
+    .flashcard-dots{display:flex;gap:4px;justify-content:center;margin-top:8px}
+    .flashcard-dot{width:6px;height:6px;border-radius:50%;background:rgba(201,168,76,.2);transition:all .3s ease}
+    .flashcard-dot.active{background:#C9A84C;transform:scale(1.3)}
+    .flashcard-dot.got{background:#2BD366}
+    .flashcard-dot.missed{background:#E74C3C}
+    .flashcard-actions{display:flex;gap:8px;justify-content:center;margin-top:10px}
+    .flashcard-got,.flashcard-missed{
+      display:flex;align-items:center;gap:5px;
+      padding:8px 16px;border-radius:8px;
+      font-family:var(--font);font-size:.6rem;font-weight:700;
+      border:none;cursor:pointer;transition:all .2s ease;
+    }
+    .flashcard-got{background:rgba(43,211,102,.15);color:#2BD366;border:1px solid rgba(43,211,102,.3)}
+    .flashcard-got:hover{background:rgba(43,211,102,.25)}
+    .flashcard-missed{background:rgba(231,76,60,.1);color:#E74C3C;border:1px solid rgba(231,76,60,.2)}
+    .flashcard-missed:hover{background:rgba(231,76,60,.2)}
+    .flashcard-result{text-align:center;padding:20px 0}
+    .flashcard-result-score{font-size:1.4rem;font-weight:900;color:#E8D48B;margin-bottom:4px}
+    .flashcard-result-text{font-size:.65rem;color:rgba(232,212,139,.5);margin-bottom:12px}
+    .flashcard-result-btn{
+      padding:10px 20px;background:linear-gradient(135deg,#C9A84C,#E8D48B);
+      color:#1a1610;font-family:var(--font);font-size:.62rem;font-weight:700;
+      border:none;border-radius:8px;cursor:pointer;transition:all .2s ease;
+    }
+    .flashcard-result-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(201,168,76,.3)}
+    /* === FLASHCARD MODAL === */
+    .fc-modal{display:none;position:fixed;inset:0;background:rgba(10,8,6,.92);backdrop-filter:blur(8px);z-index:1500;align-items:center;justify-content:center;padding:16px;flex-direction:column}
+    .fc-modal.active{display:flex}
+    .fc-modal-header{width:100%;max-width:400px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .fc-modal-title{font-size:.8rem;font-weight:800;color:#E8D48B}
+    .fc-modal-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s ease}
+    .fc-modal-close:hover{background:rgba(201,168,76,.15)}
+    .fc-modal-close svg{width:16px;height:16px;color:#C9A84C}
+    .fc-modal-body{width:100%;max-width:400px}
     .login-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(2px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px}
     .login-box{background:#fff;border-radius:20px;padding:36px 28px;max-width:360px;width:100%;text-align:center;animation:modalIn .4s ease}
     .login-icon{width:52px;height:52px;border-radius:50%;background:#EDF7F2;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
@@ -276,6 +357,22 @@
           <div class="fixacao-pdf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
         </a>
       </div>
+      <div class="fixacao-flashcards">
+        <div style="cursor:pointer;background:linear-gradient(135deg,#f8f8f8 0%,#e8e8e8 30%,#f0f0f0 50%,#d8d8d8 70%,#f0f0f0 100%);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,.6);position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.8)" onclick="openFlashcards()">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent)"></div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <div style="width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#b0b0b0,#e0e0e0,#c0c0c0);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2" width="16" height="16"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <div style="flex:1">
+              <div style="font-size:.72rem;font-weight:800;color:#333;letter-spacing:.3px">Flashcards · Revisão Rápida</div>
+              <div style="font-size:.55rem;font-weight:500;color:#888">10 cards para fixar os pontos-chave</div>
+            </div>
+            <div style="padding:5px 12px;background:linear-gradient(135deg,#555,#333);border-radius:6px;font-size:.5rem;font-weight:700;color:#e0e0e0;text-transform:uppercase;letter-spacing:.5px">Iniciar</div>
+          </div>
+          <div style="display:flex;gap:3px;padding-left:44px">
+            <div style="width:100%;height:3px;border-radius:2px;background:linear-gradient(90deg,#aaa,#ccc,#aaa);opacity:.4"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <h2 class="section-title">Módulos do Curso</h2>
@@ -324,6 +421,31 @@
     function restartQuiz(){currentQ=0;score=0;missedQs=[];dotResults=[];document.getElementById('quizContainer').style.display='block';document.getElementById('quizResult').style.display='none';document.getElementById('retryMissed').style.display='none';initDots();renderQuestion()}
     function retryMissed(){var missed=missedQs.slice();var newData=missed.map(function(i){return quizData[i]});quizData.splice(0,quizData.length);newData.forEach(function(q){quizData.push(q)});currentQ=0;score=0;missedQs=[];dotResults=[];document.getElementById('quizContainer').style.display='block';document.getElementById('quizResult').style.display='none';document.getElementById('retryMissed').style.display='none';initDots();renderQuestion()}
     initDots();renderQuestion();
+
+    /* === FLASHCARDS === */
+    var fcData=[
+      {q:"Quantos critérios de Atlanta são necessários para confirmar pancreatite aguda?",a:"2 de 3: dor típica + enzimas >3x + imagem. Imagem não é obrigatória se os outros 2 estiverem presentes."},
+      {q:"Qual enzima é mais específica: amilase ou lipase?",a:"Lipase. Mais específica, persiste até 14 dias. Amilase sobe rápido mas cai rápido e tem baixa especificidade."},
+      {q:"Quando solicitar TC na pancreatite aguda?",a:"Nunca nas primeiras horas. Só após 48-72h ou complicações. TC precoce subestima necrose e não muda conduta."},
+      {q:"O que define pancreatite GRAVE pela Atlanta?",a:"Falência orgânica persistente (>48h): creatinina elevada, pH em queda, hipotensão refratária. Indicação de UTI."},
+      {q:"Qual a fórmula do CTSI?",a:"CTSI = Baltazar (A-E, 0-4pts) + Necrose (0, <30%=2, 30-50%=4, >50%=6). CTSI ≥8 = alto risco."},
+      {q:"Qual a nutrição ideal na pancreatite grave?",a:"Enteral precoce (gástrica ou pós-pilórica). Posição da sonda não importa. Parenteral só se enteral inviável por >7 dias."},
+      {q:"Sinal tomográfico mais importante de necrose infectada?",a:"Bolhas de gás na coleção. Ocorre 7-10 dias. Imipenem + step-up. Necrosectomia imediata piora o quadro."},
+      {q:"Regra para drenagem de pseudocisto?",a:"6-6-6: >6 semanas + >6cm + sintomático = drenagem endoscópica transgástrica. <4 sem: observar."},
+      {q:"Pseudoaneurisma + queda de Hb + hipotensão: conduta?",a:"Embolização angiográfica seletiva (1ª linha). Mesmo sem extravasamento, se há repercussão hemodinâmica, embolizar."},
+      {q:"Quando fazer colecistectomia na pancreatite biliar?",a:"MESMA INTERNAÇÃO, todos os graus. Após resolução, nunca na fase aguda. Não esperar — recidiva é altíssima."}
+    ];
+    var fcIdx=0,fcFlipped=false,fcResults=[];
+    function fcInitDots(){var d=document.getElementById('fcDots');d.innerHTML='';for(var i=0;i<fcData.length;i++){var dot=document.createElement('div');dot.className='flashcard-dot'+(i===0?' active':'');d.appendChild(dot)}}
+    function fcUpdateDots(){var dots=document.querySelectorAll('.flashcard-dot');dots.forEach(function(d,i){d.className='flashcard-dot';if(i===fcIdx)d.classList.add('active');if(fcResults[i]==='got')d.classList.add('got');if(fcResults[i]==='missed')d.classList.add('missed')})}
+    function fcRender(){document.getElementById('fcQuestion').textContent=fcData[fcIdx].q;document.getElementById('fcAnswer').textContent=fcData[fcIdx].a;document.getElementById('flashcard').classList.remove('flipped');fcFlipped=false;document.getElementById('fcCounter').textContent=(fcIdx+1)+' / '+fcData.length;document.getElementById('fcPrev').className='flashcard-btn'+(fcIdx===0?' disabled':'');document.getElementById('fcActions').style.display='none';fcUpdateDots()}
+    function flipCard(){var fc=document.getElementById('flashcard');fc.classList.toggle('flipped');fcFlipped=!fcFlipped;if(fcFlipped&&!fcResults[fcIdx])document.getElementById('fcActions').style.display='flex'}
+    function fcMark(type){fcResults[fcIdx]=type;document.getElementById('fcActions').style.display='none';fcUpdateDots();setTimeout(function(){if(fcIdx<fcData.length-1){fcIdx++;fcRender()}else{fcShowResult()}},400)}
+    function fcNav(dir){fcIdx=Math.max(0,Math.min(fcData.length-1,fcIdx+dir));fcRender()}
+    function fcShowResult(){document.getElementById('flashcardArea').style.display='none';document.getElementById('fcResult').style.display='block';var got=fcResults.filter(function(r){return r==='got'}).length;document.getElementById('fcScore').textContent=got+'/'+fcData.length;var p=Math.round(got/fcData.length*100);var t=p===100?'Dominou tudo! Pronto pra prova.':p>=70?'Quase lá! Revise os que errou.':'Revise a mentoria e tente novamente.';document.getElementById('fcResultText').textContent=t}
+    function fcRestart(){fcIdx=0;fcResults=[];document.getElementById('flashcardArea').style.display='block';document.getElementById('fcResult').style.display='none';fcInitDots();fcRender()}
+    fcInitDots();fcRender();
+
     (function(){var b=287;var el=document.getElementById('viewerCount');function u(){var c=Math.floor(Math.random()*7)-3;b=Math.max(241,Math.min(318,b+c));if(el)el.textContent=b;setTimeout(u,Math.floor(Math.random()*4000)+3000)}setTimeout(u,5000)})();
     function handleLogin(){var n=document.getElementById('loginNome').value.trim();var e=document.getElementById('loginEmail').value.trim();if(n.length<2){document.getElementById('loginNome').style.borderColor='#E74C3C';return}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){document.getElementById('loginEmail').style.borderColor='#E74C3C';return}var f=n.split(' ')[0];f=f.charAt(0).toUpperCase()+f.slice(1).toLowerCase();var w=document.querySelector('.welcome p');if(w)w.innerHTML='Olá, <strong>'+f+'</strong> · você está conectado';document.getElementById('appWrapper').classList.remove('blurred');document.getElementById('loginOverlay').style.display='none';document.body.style.overflow=''}
     document.body.style.overflow='hidden';
@@ -331,5 +453,51 @@
     document.getElementById('loginEmail').addEventListener('input',function(){this.style.borderColor='#E5E7EB'});
   </script>
   </div>
+
+  <!-- FLASHCARD MODAL -->
+  <div class="fc-modal" id="fcModal">
+    <div class="fc-modal-header">
+      <span class="fc-modal-title">Flashcards · Revisão Rápida</span>
+      <div class="fc-modal-close" onclick="closeFlashcards()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+    </div>
+    <div class="fc-modal-body">
+      <div id="flashcardArea">
+        <div class="flashcard-wrapper" onclick="flipCard()">
+          <div class="flashcard" id="flashcard">
+            <div class="flashcard-face flashcard-front">
+              <div class="flashcard-front-label">Pergunta</div>
+              <div class="flashcard-front-q" id="fcQuestion"></div>
+              <div class="flashcard-tap">Toque para ver a resposta</div>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <div class="flashcard-back-label">Resposta</div>
+              <div class="flashcard-back-a" id="fcAnswer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="flashcard-dots" id="fcDots"></div>
+        <div class="flashcard-actions" id="fcActions" style="display:none">
+          <button class="flashcard-missed" onclick="fcMark('missed')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Errei</button>
+          <button class="flashcard-got" onclick="fcMark('got')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>Acertei</button>
+        </div>
+        <div class="flashcard-nav">
+          <button class="flashcard-btn" id="fcPrev" onclick="fcNav(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <span class="flashcard-counter" id="fcCounter">1 / 10</span>
+          <button class="flashcard-btn" id="fcNext" onclick="fcNav(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+      </div>
+      <div class="flashcard-result" id="fcResult" style="display:none">
+        <div class="flashcard-result-score" id="fcScore"></div>
+        <div class="flashcard-result-text" id="fcResultText"></div>
+        <button class="flashcard-result-btn" onclick="fcRestart()">Revisar novamente</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  function openFlashcards(){document.getElementById('fcModal').classList.add('active');document.body.style.overflow='hidden';fcRestart()}
+  function closeFlashcards(){document.getElementById('fcModal').classList.remove('active');document.body.style.overflow=''}
+  </script>
+
 </body>
 </html>
