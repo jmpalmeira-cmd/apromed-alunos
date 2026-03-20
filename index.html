@@ -148,7 +148,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="fixacao-items">
 <div class="fixacao-audio">
 <div class="fixacao-audio-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>Áudio-resumo da mentoria</div>
-<audio controls preload="none" src="https://apromed.com.br/audio/mentoria_cad.m4a">Seu navegador não suporta áudio.</audio>
+<audio id="audioPlayer" preload="none" src="https://apromed.com.br/audio/mentoria_cad.m4a"></audio>
+<div style="display:flex;align-items:center;gap:8px;margin-top:8px">
+<button id="audioPlayBtn" onclick="toggleAudio()" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#C9A84C,#E8D48B);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0"><svg id="audioPlayIcon" viewBox="0 0 24 24" fill="#1a1610" stroke="none" width="16" height="16"><polygon points="5,3 19,12 5,21"/></svg></button>
+<div style="flex:1;display:flex;flex-direction:column;gap:4px">
+<div style="position:relative;height:6px;background:rgba(201,168,76,.15);border-radius:3px;cursor:pointer" onclick="seekAudio(event)" id="audioProgressBar"><div id="audioProgress" style="height:100%;background:linear-gradient(90deg,#C9A84C,#E8D48B);border-radius:3px;width:0%;transition:width .1s"></div></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><span id="audioTime" style="font-size:.48rem;color:rgba(201,168,76,.5);font-weight:600">0:00 / 0:00</span>
+<button id="audioSpeedBtn" onclick="cycleSpeed()" style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.25);border-radius:6px;padding:3px 8px;font-family:var(--font);font-size:.52rem;font-weight:700;color:#C9A84C;cursor:pointer">1x</button></div>
+</div>
+</div>
 </div>
 <a class="fixacao-pdf" href="https://apromed.com.br/materiais/apoio_cad.pdf" target="_blank" download>
 <div class="fixacao-pdf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
@@ -310,8 +318,8 @@ function switchCourse(course){
   if(pdfLink)pdfLink.href=course==='endoscopia'?'https://apromed.com.br/materiais/apoio_endo.pdf':'https://apromed.com.br/materiais/apoio_cad.pdf';
   var pdfDesc=document.querySelector('.fixacao-pdf-desc');
   if(pdfDesc)pdfDesc.textContent=course==='endoscopia'?'Endoscopia \u00b7 Lesões esofágicas \u00b7 Varizes — PDF para download':'Pancreatite \u00b7 Vias Biliares \u00b7 Tumores — PDF para download';
-  var audioEl=document.querySelector('.fixacao-audio audio');
-  if(audioEl)audioEl.src=course==='endoscopia'?'https://apromed.com.br/audio/mentoria_endo.m4a':'https://apromed.com.br/audio/mentoria_cad.m4a';
+  var audioEl=document.getElementById('audioPlayer');
+  if(audioEl){audioEl.src=course==='endoscopia'?'https://apromed.com.br/audio/mentoria_endo.m4a':'https://apromed.com.br/audio/mentoria_cad.m4a';audioEl.pause();document.getElementById('audioPlayIcon').innerHTML='<polygon points="5,3 19,12 5,21" fill="#1a1610"/>';document.getElementById('audioProgress').style.width='0%';document.getElementById('audioTime').textContent='0:00 / 0:00';}
 }
 </script>
 
@@ -402,6 +410,43 @@ function postComment(){
   var d=new Date();
   var el=document.getElementById('avisoDate');
   if(el)el.textContent=d.getDate()+' '+meses[d.getMonth()].toUpperCase()+' '+d.getFullYear();
+})();
+</script>
+
+<script>
+var audioSpeeds=[1,1.25,1.5,1.75,2];
+var audioSpeedIdx=0;
+function toggleAudio(){
+  var a=document.getElementById('audioPlayer');
+  var icon=document.getElementById('audioPlayIcon');
+  if(a.paused){a.play();icon.innerHTML='<rect x="6" y="4" width="4" height="16" fill="#1a1610"/><rect x="14" y="4" width="4" height="16" fill="#1a1610"/>';}
+  else{a.pause();icon.innerHTML='<polygon points="5,3 19,12 5,21" fill="#1a1610"/>';}
+}
+function cycleSpeed(){
+  audioSpeedIdx=(audioSpeedIdx+1)%audioSpeeds.length;
+  var a=document.getElementById('audioPlayer');
+  a.playbackRate=audioSpeeds[audioSpeedIdx];
+  document.getElementById('audioSpeedBtn').textContent=audioSpeeds[audioSpeedIdx]+'x';
+}
+function seekAudio(e){
+  var a=document.getElementById('audioPlayer');
+  var bar=document.getElementById('audioProgressBar');
+  var rect=bar.getBoundingClientRect();
+  var pct=(e.clientX-rect.left)/rect.width;
+  a.currentTime=pct*a.duration;
+}
+function fmtTime(s){if(isNaN(s))return '0:00';var m=Math.floor(s/60);var sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec;}
+(function(){
+  var a=document.getElementById('audioPlayer');
+  if(!a)return;
+  a.addEventListener('timeupdate',function(){
+    var pct=a.duration?(a.currentTime/a.duration*100):0;
+    document.getElementById('audioProgress').style.width=pct+'%';
+    document.getElementById('audioTime').textContent=fmtTime(a.currentTime)+' / '+fmtTime(a.duration);
+  });
+  a.addEventListener('ended',function(){
+    document.getElementById('audioPlayIcon').innerHTML='<polygon points="5,3 19,12 5,21" fill="#1a1610"/>';
+  });
 })();
 </script>
 </body>
