@@ -281,6 +281,7 @@ function switchCourse(course){
   var body=document.body;
   body.classList.remove('theme-endoscopia');
   body.classList.remove('theme-gastro');
+  body.classList.remove('theme-colo');
   var title=document.querySelector('.mentoria-info h4');
   var iframe=document.querySelector('.mentoria-video iframe');
   var digestivoSrc='https://player.vimeo.com/video/1174902258?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479';
@@ -509,6 +510,7 @@ switchCourse = function(course) {
   if (course === 'hepatologia') {
     body.classList.remove('theme-endoscopia');
     body.classList.remove('theme-gastro');
+    body.classList.remove('theme-colo');
     body.classList.add('theme-hepatologia');
     
     var hl = document.getElementById('videoHeadline');
@@ -755,6 +757,150 @@ var commentsGastro="<div class=\"comment\"><div class=\"comment-avatar\">LF</div
       }
       var icon = card.querySelector('.course-card-icon');
       if (icon) icon.style.background = 'linear-gradient(135deg,#B27060,#D4896E)';
+      h4.style.color = '';
+      var p = card.querySelector('p');
+      if (p) p.textContent = '12 módulos · Mentoria ao vivo';
+    }
+  });
+})();
+</script>
+
+
+<style>
+body.theme-colo{--green:#400507;--green-light:#8B1A1D;--green-dark:#2D0305}
+body.theme-colo .mentoria-badge{background:#FCECED;color:#400507}
+body.theme-colo .quiz-feedback.correct-fb{background:#FCECED;color:#2D0305}
+body.theme-colo .quiz-option:hover{border-color:#400507;background:#FDF5F5}
+body.theme-colo .quiz-option.selected{border-color:#400507;background:#FCECED}
+body.theme-colo .quiz-option.correct{border-color:#8B1A1D;background:#F9DCDD}
+body.theme-colo .quiz-option.selected .quiz-option-letter{background:#400507}
+body.theme-colo .quiz-option.correct .quiz-option-letter{background:#8B1A1D}
+body.theme-colo .quiz-explain-btn:hover{border-color:#400507;color:#400507;background:#FDF5F5}
+body.theme-colo .quiz-restart-missed:hover{border-color:#400507;background:#FDF5F5}
+body.theme-colo .apromed-avatar{background:#400507!important}
+body.theme-colo .apromed-name{color:#400507!important}
+body.theme-colo .comment-badge-sm{background:#400507}
+body.theme-colo .login-btn{background:#400507}
+body.theme-colo .login-btn:hover{background:#2D0305}
+body.theme-colo .login-field input:focus{border-color:#400507}
+</style>
+
+<script>
+var quizColo=[{q:"Onde estão localizados os receptores de propriocepção responsáveis pela discriminação do conteúdo fecal?",opts:["No reto inferior","No canal anal superior e nos elevadores do ânus","No esfíncter anal externo","Na mucosa colônica distal"],correct:1,explain:"O reto não possui receptores de propriocepção. Esses receptores estão no canal anal superior e nos elevadores do ânus, permitindo a discriminação entre gases, fezes líquidas e sólidas. Isso explica por que pacientes submetidos à excisão total do mesorreto podem manter continência."},{q:"Qual é a principal característica do esfíncter anal interno em relação à sua inervação?",opts:["É voluntário, inervado pelo nervo pudendo","É involuntário, inervado por fibras simpáticas e parassimpáticas","É misto, com controle voluntário e involuntário","É voluntário, inervado pelos nervos erigentes"],correct:1,explain:"O esfíncter anal interno é de musculatura involuntária (musculatura lisa), inervado por fibras simpáticas e parassimpáticas. É responsável por 70-80% do tono de repouso do canal anal. O esfíncter externo é voluntário (musculatura estriada), inervado pelo nervo pudendo."},{q:"No reflexo inibitório retoanal (RIRA), o que ocorre quando o balão é insuflado no reto?",opts:["Contração do esfíncter interno e relaxamento do externo","Relaxamento do esfíncter interno com contração reflexa do externo","Contração simultânea de ambos os esfíncteres","Relaxamento simultâneo de ambos os esfíncteres"],correct:1,explain:"O RIRA consiste no relaxamento do esfíncter anal interno quando há distensão retal, acompanhado de contração reflexa do esfíncter externo. Isso permite que o conteúdo retal entre em contato com a mucosa do canal anal superior para discriminação, enquanto a continência é mantida pelo externo."},{q:"Qual é o tono de repouso normal do esfíncter anal interno na manometria anorretal?",opts:["10 a 20 mmHg","40 a 80 mmHg","100 a 150 mmHg","200 a 250 mmHg"],correct:1,explain:"O tono de repouso normal é de 40 a 80 mmHg, mantido principalmente pelo esfíncter anal interno. A pressão máxima de contração voluntária (esfíncter externo) acrescenta mais 40-80 mmHg. O comprimento da zona de alta pressão (canal anal) varia de 2 a 4 cm."},{q:"Sobre o preparo pré-operatório em cirurgia coloretal, segundo as diretrizes atuais da Sociedade Americana, qual é a recomendação?",opts:["Preparo mecânico isolado para todas as cirurgias","Preparo de cólon associado a antibiótico oral","Nenhum preparo é necessário em cirurgias eletivas","Apenas antibiótico endovenoso profilático"],correct:1,explain:"A recomendação da Sociedade Americana de Cirurgia Coloretal é preparo de cólon + antibiótico oral para todas as cirurgias coloretais. O protocolo ERAS recomenda apenas para cirurgia baixa. Importante: o preparo mecânico isolado não diminui o risco de complicações."},{q:"Qual parâmetro define a necessidade de intervenção nutricional pré-operatória?",opts:["IMC < 25 isoladamente","Albumina < 3 g/dL ou perda de peso > 10% em 6 meses","Hemoglobina < 12 g/dL","Idade > 65 anos isoladamente"],correct:1,explain:"Indicações de intervenção nutricional: IMC < 18,5 (ou < 20 se > 65 anos), perda de peso não planejada > 10% nos últimos 6 meses, ingestão < 50% da dieta normal na semana anterior, ou albumina < 3 g/dL. A pré-albumina é o marcador de tendência de melhora."},{q:"Em relação à tromboprofilaxia em coloproctologia, qual a conduta para cirurgia orificial em paciente < 40 anos sem risco adicional?",opts:["Profilaxia medicamentosa com heparina","Profilaxia mecânica + medicamentosa","Não fazer profilaxia","Apenas AAS em dose baixa"],correct:2,explain:"Orificial < 40 anos sem risco adicional: não fazer profilaxia. Orificial > 40 anos ou com risco adicional: avaliar individualmente, geralmente profilaxia mecânica. Cirurgia abdominal de risco moderado/alto: profilaxia medicamentosa (heparina não fracionada ou de baixo peso molecular)."},{q:"Qual é a complicação pós-operatória mais comum em cirurgia coloretal?",opts:["Fístula anastomótica","Tromboembolismo pulmonar","Íleo pós-operatório, sangramento e infecção de sítio cirúrgico","Lesão ureteral"],correct:2,explain:"35% dos pacientes submetidos à cirurgia coloretal têm complicação pós-operatória. As mais comuns são: íleo, sangramento e infecção de sítio cirúrgico (ISC). A ISC na cirurgia coloretal é de 15-30% pela natureza potencialmente contaminada. ISC não complicada: drenagem + cuidado local, SEM antibioticoterapia."},{q:"No protocolo ERAS, qual a orientação sobre administração de carboidratos no pré-operatório?",opts:["Jejum absoluto de 12 horas","Carboidratos orais permitidos até 2 horas antes da cirurgia","Apenas hidratação venosa com glicose","Dieta leve até 6 horas antes"],correct:1,explain:"O ERAS orienta administração oral de carboidratos até 2 horas antes da cirurgia. Isso diminui a resistência à insulina no pós-operatório. Líquidos claros: até 2 horas antes. Sólidos: até 6-8 horas antes. A resistência à insulina pós-operatória é um dos fatores que mais impacta a recuperação."},{q:"Lesão dos nervos erigentes (parassimpáticos) durante cirurgia do reto está mais associada a qual disfunção?",opts:["Disfunção ejaculatória","Disfunção erétil","Incontinência fecal","Retenção urinária isolada"],correct:1,explain:"Nervos erigentes (parassimpáticos): responsáveis pela ereção. Lesão ocorre principalmente durante tração do reto, próstata e vesículas seminais. Nervos hipogástricos (simpáticos): responsáveis pela ejaculação. Lesão mais comum na excisão total do mesorreto e ligadura da artéria mesentérica inferior."}];
+
+var fcColo=[{q:"Esfíncter anal interno vs. externo: qual a diferença?",a:"Interno: involuntário (musculatura lisa), inervação simpática e parassimpática, responsável por 70-80% do tono de repouso. Externo: voluntário (musculatura estriada), inervado pelo nervo pudendo."},{q:"O que é o reflexo inibitório retoanal (RIRA)?",a:"Distensão retal → relaxamento do esfíncter interno + contração reflexa do externo. Permite discriminação do conteúdo fecal. Avaliado na manometria anorretal com insuflação de balão."},{q:"Manometria anorretal: valores normais?",a:"Tono de repouso: 40-80 mmHg (esfíncter interno). Pressão máxima de contração: +40-80 mmHg (esfíncter externo). Canal anal (zona de alta pressão): 2-4 cm."},{q:"Espaços anorretais: quais são e onde ficam?",a:"Interesfincteriano: entre esfíncter interno e externo. Perianal: abaixo do externo, perto da pele. Isquiorretal: lateral ao externo. Supraelevador: acima do elevador do ânus."},{q:"Fáscia de Denonvilliers vs. Waldeyer?",a:"Denonvilliers: anterior ao reto (separa de próstata/vesículas seminais no homem). Waldeyer: posterior ao reto (também chamada pré-sacral ou retro-retal)."},{q:"Preparo pré-operatório em cirurgia coloretal: qual a recomendação?",a:"Sociedade Americana: preparo de cólon + antibiótico oral para todas as cirurgias. ERAS: só para cirurgia baixa. Preparo mecânico isolado NÃO diminui complicações."},{q:"Quando fazer intervenção nutricional pré-operatória?",a:"IMC < 18,5 (ou < 20 se > 65 anos), perda de peso > 10% em 6 meses, ingestão < 50% na semana anterior, ou albumina < 3. Pré-albumina é o marcador de tendência."},{q:"ERAS: carboidratos pré-operatórios?",a:"Carboidratos orais até 2h antes da cirurgia. Diminui resistência à insulina pós-operatória. Líquidos claros: 2h. Sólidos: 6-8h."},{q:"Nervos erigentes vs. hipogástricos: qual a função?",a:"Erigentes (parassimpáticos): ereção. Lesão na tração do reto/próstata. Hipogástricos (simpáticos): ejaculação. Lesão na excisão total do mesorreto e ligadura da AMI."},{q:"ISC na cirurgia coloretal: como manejar?",a:"ISC: 15-30% (natureza contaminada). Não complicada: drenagem + cuidado local, SEM antibiótico. Complicada (profunda/choque séptico): terapia agressiva + possível reabordagem. Prevenção: normotermia >36°C, FiO2 >80%, glicemia <200."}];
+
+var commentsColo="<div class=\"comment\"><div class=\"comment-avatar\">AS</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name\">Dra. Ana Souza</span><span class=\"comment-time\">há 2 dias</span></div><p>A diferença entre RIRA e a manometria normal ficou muito clara. O relaxamento do interno com contração reflexa do externo é o tipo de conceito que a prova adora cobrar</p><div class=\"comment-likes\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\"><path d=\"M14 9V5a3 3 0 00-6 0v4H5a2 2 0 00-2 2v7a2 2 0 002 2h10.5a2.5 2.5 0 002.45-2L19.5 11a2.5 2.5 0 00-2.45-2H14z\"/></svg> 16</div><div class=\"comment-reply\"><div class=\"comment-avatar apromed-avatar\">AM</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name apromed-name\">APROVAMED 360°</span><span class=\"comment-badge-sm\">Equipe</span><span class=\"comment-time\">há 1 dia</span></div><p>Exatamente, Dra. Ana! E lembrar: os receptores de propriocepção estão no canal anal superior e nos elevadores, não no reto. Por isso pacientes com excisão total do mesorreto podem manter continência.</p></div></div></div></div><div class=\"comment\"><div class=\"comment-avatar\">RM</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name\">Dr. Ricardo Martins</span><span class=\"comment-time\">há 2 dias</span></div><p>A parte do ERAS me pegou. Carboidratos orais até 2 horas antes da cirurgia diminuindo resistência à insulina. E o preparo de cólon + antibiótico oral sendo a recomendação da Sociedade Americana. Isso vai cair com certeza</p><div class=\"comment-likes\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\"><path d=\"M14 9V5a3 3 0 00-6 0v4H5a2 2 0 00-2 2v7a2 2 0 002 2h10.5a2.5 2.5 0 002.45-2L19.5 11a2.5 2.5 0 00-2.45-2H14z\"/></svg> 21</div><div class=\"comment-reply\"><div class=\"comment-avatar apromed-avatar\">AM</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name apromed-name\">APROVAMED 360°</span><span class=\"comment-badge-sm\">Equipe</span><span class=\"comment-time\">há 1 dia</span></div><p>Ponto crucial, Dr. Ricardo! A Dra. Raquel enfatizou que o ERAS recomenda preparo apenas para cirurgia baixa, enquanto a Sociedade Americana recomenda para todas. Fiquem atentos a como a questão é formulada.</p></div></div></div></div><div class=\"comment\"><div class=\"comment-avatar\">PL</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name\">Dr. Pedro Lopes</span><span class=\"comment-time\">há 1 dia</span></div><p>A questão dos espaços anorretais sempre me confundia. Interesfincteriano entre os dois esfíncteres, perianal abaixo do externo, isquiorretal lateral. Agora ficou claro</p><div class=\"comment-likes\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\"><path d=\"M14 9V5a3 3 0 00-6 0v4H5a2 2 0 00-2 2v7a2 2 0 002 2h10.5a2.5 2.5 0 002.45-2L19.5 11a2.5 2.5 0 00-2.45-2H14z\"/></svg> 13</div></div></div><div class=\"comment\"><div class=\"comment-avatar\">CF</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name\">Dra. Carolina Faria</span><span class=\"comment-time\">há 18h</span></div><p>Nervos erigentes = ereção, hipogástricos = ejaculação. E a lesão dos erigentes na tração do reto. A Dra. Raquel simplificou demais, salvou minha vida pra prova</p><div class=\"comment-likes\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\"><path d=\"M14 9V5a3 3 0 00-6 0v4H5a2 2 0 00-2 2v7a2 2 0 002 2h10.5a2.5 2.5 0 002.45-2L19.5 11a2.5 2.5 0 00-2.45-2H14z\"/></svg> 19</div><div class=\"comment-reply\"><div class=\"comment-avatar apromed-avatar\">AM</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name apromed-name\">APROVAMED 360°</span><span class=\"comment-badge-sm\">Equipe</span><span class=\"comment-time\">há 12h</span></div><p>Perfeito, Dra. Carolina! E lembrar que a ligadura da artéria mesentérica inferior pode lesar os nervos hipogástricos. Já a tração do reto e das vesículas seminais lesa os erigentes. A prova adora cruzar essas informações.</p></div></div></div></div><div class=\"comment\"><div class=\"comment-avatar\">FN</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name\">Dr. Felipe Nogueira</span><span class=\"comment-time\">há 10h</span></div><p>ISC não complicada: drenagem sem antibiótico. Parece contraintuitivo mas é o que o livro coloca. Anotado pra não errar na prova</p><div class=\"comment-likes\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\"><path d=\"M14 9V5a3 3 0 00-6 0v4H5a2 2 0 00-2 2v7a2 2 0 002 2h10.5a2.5 2.5 0 002.45-2L19.5 11a2.5 2.5 0 00-2.45-2H14z\"/></svg> 9</div></div></div><div class=\"comment\"><div class=\"comment-avatar\">ML</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name\">Dra. Mariana Lima</span><span class=\"comment-time\">há 1 dia</span></div><p>A parte da tromboprofilaxia ficou muito didática. Orificial < 40 anos sem risco = nada. Abdominal moderado/alto = heparina. Decorei na hora</p><div class=\"comment-likes\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\"><path d=\"M14 9V5a3 3 0 00-6 0v4H5a2 2 0 00-2 2v7a2 2 0 002 2h10.5a2.5 2.5 0 002.45-2L19.5 11a2.5 2.5 0 00-2.45-2H14z\"/></svg> 14</div><div class=\"comment-reply\"><div class=\"comment-avatar apromed-avatar\">AM</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name apromed-name\">APROVAMED 360°</span><span class=\"comment-badge-sm\">Equipe</span><span class=\"comment-time\">há 20h</span></div><p>Isso mesmo, Dra. Mariana! E lembrar: se risco aumentado de sangramento, só profilaxia mecânica. Alto risco de TEV: mecânica + medicamentosa. A abordagem laparoscópica tem o mesmo risco que a aberta para tromboembolismo.</p></div></div></div></div><div class=\"comment\"><div class=\"comment-avatar\">TG</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name\">Dr. Thiago Guimarães</span><span class=\"comment-time\">há 20h</span></div><p>Fáscia de Denonvilliers anterior e Waldeyer posterior. Nunca mais vou confundir depois dessa aula. E o detalhe do ligamento lateral que pode conter artéria retal média em 28% dos casos segundo o tratado brasileiro</p><div class=\"comment-likes\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\"><path d=\"M14 9V5a3 3 0 00-6 0v4H5a2 2 0 00-2 2v7a2 2 0 002 2h10.5a2.5 2.5 0 002.45-2L19.5 11a2.5 2.5 0 00-2.45-2H14z\"/></svg> 11</div></div></div><div class=\"comment\"><div class=\"comment-avatar\">JC</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name\">Dra. Juliana Costa</span><span class=\"comment-time\">há 16h</span></div><p>A avaliação nutricional pré-operatória me surpreendeu. Albumina < 3 já indica intervenção, e a pré-albumina como marcador de tendência de melhora. Na prática a gente subestima muito isso</p><div class=\"comment-likes\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\"><path d=\"M14 9V5a3 3 0 00-6 0v4H5a2 2 0 00-2 2v7a2 2 0 002 2h10.5a2.5 2.5 0 002.45-2L19.5 11a2.5 2.5 0 00-2.45-2H14z\"/></svg> 17</div><div class=\"comment-reply\"><div class=\"comment-avatar apromed-avatar\">AM</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name apromed-name\">APROVAMED 360°</span><span class=\"comment-badge-sm\">Equipe</span><span class=\"comment-time\">há 10h</span></div><p>Ponto fundamental, Dra. Juliana! E não esquecer: sarcopenia aumenta significativamente tempo de internação, mortalidade em 1 ano e complicações maiores. A otimização nutricional pré-operatória é um dos pilares do ERAS.</p></div></div></div></div><div class=\"comment\"><div class=\"comment-avatar\">DV</div><div class=\"comment-body\"><div class=\"comment-header\"><span class=\"comment-name\">Dr. Daniel Vieira</span><span class=\"comment-time\">há 8h</span></div><p>Sobre os METs na avaliação cardiovascular: acima de 4 não precisa de investigação adicional. E cirurgia coloretal por si só é risco intermediário. Esses detalhes caem direto na prova</p><div class=\"comment-likes\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\"><path d=\"M14 9V5a3 3 0 00-6 0v4H5a2 2 0 00-2 2v7a2 2 0 002 2h10.5a2.5 2.5 0 002.45-2L19.5 11a2.5 2.5 0 00-2.45-2H14z\"/></svg> 8</div></div></div>";
+
+/* Patch switchCourse to handle colo */
+(function(){
+  var origSwitch = window.switchCourse || function(){};
+  
+  window.switchCourse = function(course) {
+    var body = document.body;
+    body.classList.remove('theme-colo');
+    body.classList.remove('theme-gastro');
+    body.classList.remove('theme-hepatologia');
+    body.classList.remove('theme-endoscopia');
+    
+    if (course === 'colo') {
+      body.classList.add('theme-colo');
+      
+      var hl = document.getElementById('videoHeadline');
+      if (hl) hl.innerHTML = 'Anatomia anorretal, manometria e ERAS: <em>o que a SBCP cobra todo ano</em>';
+      
+      var iframe = document.querySelector('.mentoria-video iframe');
+      if (iframe) {
+        iframe.setAttribute('src', 'https://player.vimeo.com/video/1177733716?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479');
+        iframe.setAttribute('title', 'MEGA REVISÃO COLO - CORTE');
+      }
+      
+      var prof = document.getElementById('mentoriaProfessor');
+      if (prof) prof.textContent = 'Dra. Raquel \u00b7 Coloproctologia';
+      
+      var tb = document.getElementById('turmasBanner');
+      if (tb) tb.style.display = 'flex';
+      
+      quizData.splice(0, quizData.length);
+      quizColo.forEach(function(q){ quizData.push(q); });
+      fcData.splice(0, fcData.length);
+      fcColo.forEach(function(f){ fcData.push(f); });
+      restartQuiz(); fcRestart();
+      
+      var cl = document.getElementById('commentsList');
+      var cc = document.querySelector('.comment-count');
+      var commentInputHTML = '<div class="comment-input-box"><div class="comment-avatar" id="commentUserAvatar" style="background:#400507;color:#fff">AL</div><div class="comment-input"><textarea id="commentTextarea" placeholder="Escreva seu comentário..." rows="2"></textarea><button class="comment-input-btn" onclick="postComment()">Enviar</button></div></div>';
+      if (cl) cl.innerHTML = commentsColo + commentInputHTML;
+      if (cc) cc.textContent = '9';
+      
+      var loginName = document.querySelector('.welcome p strong');
+      if (loginName) {
+        var ua = document.getElementById('commentUserAvatar');
+        if (ua) ua.textContent = loginName.textContent.substring(0, 2).toUpperCase();
+      }
+      
+      var modNames = ["Endoscopia e Polipectomia","Doenças Anorretais e Perineais","Neoplasias de Ânus e do Canal Anal","Câncer Colorretal Hereditário","Aspectos do Câncer Colorretal e Câncer de Cólon","Câncer de Reto e Aspectos Especiais do CCR","Situações Emergenciais e Populações Especiais","Colites","Doenças Inflamatórias Intestinais","Distúrbios da Evacuação e Pós-cirúrgicos","Doenças Benignas"];
+      var mods = document.querySelectorAll('.modulos-grid .modulo-item');
+      for (var i = 0; i < mods.length; i++) {
+        if (i < modNames.length) {
+          mods[i].style.display = '';
+          mods[i].querySelector('.modulo-number span').textContent = (i + 2) + '°';
+          mods[i].querySelector('h5').textContent = modNames[i];
+        } else {
+          mods[i].style.display = 'none';
+        }
+      }
+      
+      var m01 = document.getElementById('modulo01Title');
+      if (m01) m01.textContent = 'Anatomia, Pré e Pós-operatório';
+      
+      var avisoP = document.querySelector('.aviso-card p');
+      if (avisoP) avisoP.textContent = 'Para desbloquear todos os 12 módulos do curso, entre em contato com nosso time e garanta sua vaga.';
+      
+      var pdfLink = document.querySelector('.fixacao-pdf');
+      if (pdfLink) pdfLink.href = 'https://apromed.com.br/materiais/apoio_colo.pdf';
+      var pdfDesc = document.querySelector('.fixacao-pdf-desc');
+      if (pdfDesc) pdfDesc.textContent = 'Anatomia \u00b7 Manometria \u00b7 ERAS \u2014 PDF para download';
+      
+      var audioEl = document.getElementById('audioPlayer');
+      if (audioEl) {
+        audioEl.src = 'https://apromed.com.br/audio/mentoria_colo.m4a';
+        audioEl.pause();
+        document.getElementById('audioPlayIcon').innerHTML = '<polygon points="5,3 19,12 5,21" fill="#1a1610"/>';
+        document.getElementById('audioProgress').style.width = '0%';
+        document.getElementById('audioTime').textContent = '0:00 / 0:00';
+      }
+      
+      return;
+    }
+    
+    origSwitch(course);
+  };
+  
+  var sel = document.getElementById('courseSelector');
+  if (sel && !sel.querySelector('option[value="colo"]')) {
+    var opt = document.createElement('option');
+    opt.value = 'colo';
+    opt.textContent = 'Coloproctologia';
+    sel.appendChild(opt);
+  }
+})();
+
+/* Activate Colo card in overlay */
+(function(){
+  var cards = document.querySelectorAll('.course-card');
+  cards.forEach(function(card) {
+    var h4 = card.querySelector('h4');
+    if (h4 && h4.textContent.trim() === 'Coloproctologia') {
+      card.style.opacity = '';
+      card.style.pointerEvents = '';
+      card.setAttribute('onclick', "selectCourse('colo')");
+      var badge = card.querySelector('div[style*="margin-left:auto"]');
+      if (badge) {
+        badge.outerHTML = '<div class="course-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>';
+      }
+      var icon = card.querySelector('.course-card-icon');
+      if (icon) icon.style.background = 'linear-gradient(135deg,#400507,#8B1A1D)';
       h4.style.color = '';
       var p = card.querySelector('p');
       if (p) p.textContent = '12 módulos · Mentoria ao vivo';
